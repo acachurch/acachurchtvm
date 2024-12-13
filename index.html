@@ -21,16 +21,17 @@
       padding: 0;
       height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       font-family: 'Arial', sans-serif;
       background: linear-gradient(45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc, #2f80ed);
       background-size: 400% 400%;
       animation: gradientAnimation 10s ease infinite;
-      overflow: hidden;
+      color: white;
     }
 
-    /* Style for the centered text */
+    /* Main text in the center */
     .text {
       color: white;
       font-size: 3rem;
@@ -38,7 +39,38 @@
       text-align: center;
       opacity: 0;
       animation: fadeIn 3s forwards;
-      animation-delay: 1s; /* Delay for the fade-in effect */
+      animation-delay: 1s;
+      flex: 1; /* Pushes footer down */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Footer styling */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      font-size: 1rem;
+    }
+
+    footer .contact-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap; /* Ensures wrapping for smaller screens */
+      gap: 20px;
+    }
+
+    footer .contact-container a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer .contact-container a:hover {
+      text-decoration: underline;
     }
 
     /* Gradient animation for background */
@@ -66,6 +98,18 @@
   </style>
 </head>
 <body>
+  <!-- Main title in the center -->
   <div class="text">ACA Church Tiruvannamalai Ministries</div>
+
+  <!-- Footer with contact details and public profiles -->
+  <footer>
+    <div class="contact-container">
+      <span>Phone: <a href="tel:+919443962034">+91 9443962034</a></span>
+      <span>Email: <a href="mailto:acatvmalai@gmail.com">acatvmalai@gmail.com</a></span>
+      <span>Follow us on: 
+        <a href="https://www.youtube.com/@acachurchthiruvannamalai2723" target="_blank">Youtube</a>
+      </span>
+    </div>
+  </footer>
 </body>
 </html>
