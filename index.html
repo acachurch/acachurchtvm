@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACA Church Tvm</title>
+  <style>
+    /* General body styles */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc, #2f80ed);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      overflow: hidden;
+    }
+
+    /* Style for the centered text */
+    .text {
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      animation-delay: 1s; /* Delay for the fade-in effect */
+    }
+
+    /* Gradient animation for background */
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Fade-in animation for text */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="text">ACA Church Tiruvannamalai Ministries</div>
+</body>
+</html>
