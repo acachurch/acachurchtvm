@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
-// Lazy load pages for code splitting
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
+
+// Lazy load other pages for code splitting
 const About = lazy(() => import('./pages/About'));
 const Ministries = lazy(() => import('./pages/Ministries'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -13,15 +14,19 @@ const Sermons = lazy(() => import('./pages/Placeholders').then(module => ({ defa
 const Events = lazy(() => import('./pages/Placeholders').then(module => ({ default: module.Events })));
 const Gallery = lazy(() => import('./pages/Placeholders').then(module => ({ default: module.Gallery })));
 
-// Loading component
+// Loading component - Full screen to prevent FOUC
 const PageLoader = () => (
   <div style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: '60vh',
-    fontSize: '1.2rem',
-    color: 'var(--color-text-muted)'
+    background: 'var(--color-background)',
+    zIndex: 9999
   }}>
     <div style={{
       display: 'flex',
@@ -37,7 +42,7 @@ const PageLoader = () => (
         borderRadius: '50%',
         animation: 'spin 1s linear infinite'
       }}></div>
-      <p>Loading...</p>
+      <p style={{ color: 'var(--color-text)' }}>Loading...</p>
     </div>
   </div>
 );
