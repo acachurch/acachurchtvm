@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Root path for acachurch.github.io
+  base: '/acachurchtvm/', // GitHub Pages repository path
   build: {
     // Code splitting for better caching
     rollupOptions: {
