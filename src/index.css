@@ -1,0 +1,313 @@
+/* Modern Church Website Design System */
+:root {
+  /* Typography */
+  --font-primary: 'Outfit', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+
+  /* Color Palette - Warm, Welcoming, Spiritual */
+  --color-primary: #D4A373;
+  /* Warm Sand/Gold */
+  --color-primary-dark: #A97C50;
+  --color-secondary: #2A475E;
+  /* Deep Calming Blue/Slate */
+  --color-accent: #E76F51;
+  /* Warm Terracotta for CTA */
+  --color-background: #FAFAF9;
+  /* Off-white/Stone */
+  --color-surface: #FFFFFF;
+  --color-text: #2D3436;
+  --color-text-muted: #636E72;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --color-primary: #E9C46A;
+  --color-primary-dark: #C9A55A;
+  --color-secondary: #F0F4F8;
+  --color-accent: #F4A261;
+  --color-background: #000000;
+  /* True Black */
+  --color-surface: #0A0A0A;
+  /* Near Black for cards */
+  --color-text: #FFFFFF;
+  --color-text-muted: #B0B0B0;
+
+  /* Dark theme specific shadows */
+  --shadow-sm: 0 1px 3px rgba(255, 255, 255, 0.1);
+  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 10px 15px rgba(255, 255, 255, 0.15);
+}
+
+.dark-theme body {
+  background-color: #000000;
+}
+
+.dark-theme .navbar {
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid rgba(233, 196, 106, 0.2);
+}
+
+.dark-theme .navbar.scrolled {
+  background: rgba(0, 0, 0, 0.98);
+  box-shadow: 0 4px 20px rgba(233, 196, 106, 0.1);
+}
+
+.dark-theme .footer {
+  background: #0A0A0A;
+  border-top: 1px solid rgba(233, 196, 106, 0.2);
+}
+
+/* Smooth theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Utility to hide scrollbar but allow scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Modern Glassmorphism Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced Page Container */
+.page-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Performance: Reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  @keyframes spin {
+
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Add dark theme button text fix */
+.dark-theme .btn-outline:hover {
+  color: #000;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+
+  /* Typography adjustments */
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.75rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  p {
+    font-size: 0.95rem !important;
+  }
+
+  /* Page container padding */
+  .page-container {
+    padding: 0 !important;
+  }
+
+  /* Section padding */
+  section {
+    padding: 3rem 5% !important;
+  }
+
+  /* Button adjustments */
+  .btn {
+    padding: 0.7rem 1.5rem !important;
+    font-size: 0.9rem !important;
+    min-width: 120px !important;
+  }
+
+  /* Grid adjustments */
+  [style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Flex adjustments */
+  [style*="display: flex"] {
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Extra small screens */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  section {
+    padding: 2rem 5% !important;
+  }
+
+  .btn {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+}

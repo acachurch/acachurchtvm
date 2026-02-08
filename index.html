@@ -1,117 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-42G7ZLR08E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-42G7ZLR08E');
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACA Church Tiruvannamalai</title>
+  <meta name="description"
+    content="Welcome to ACA Church Tiruvannamalai Ministries. Join us for Sunday Service, worship, and spiritual growth." />
+  <!-- Google Site Verification -->
   <meta name="google-site-verification" content="-XLwNiY2_VRWQus4bphgYXIOsZdT4vGHI4rycr0o4nM" />
-  <title>ACA Church Tvm</title>
-  <style>
-    /* General body styles */
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc, #2f80ed);
-      background-size: 400% 400%;
-      animation: gradientAnimation 10s ease infinite;
-      color: white;
-      overflow-x: hidden;
-    }
 
-    /* Main text in the center */
-    .text {
-      color: white;
-      font-size: 3rem;
-      font-weight: bold;
-      text-align: center;
-      opacity: 0;
-      animation: fadeIn 3s forwards;
-      animation-delay: 1s;
-      flex: 1; /* Pushes footer down */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Footer styling */
-    footer {
-      width: 100%;
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-      font-size: 1rem;
-    }
-
-    footer .contact-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap; /* Ensures wrapping for smaller screens */
-      gap: 20px;
-    }
-
-    footer .contact-container a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer .contact-container a:hover {
-      text-decoration: underline;
-    }
-
-    /* Gradient animation for background */
-    @keyframes gradientAnimation {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    /* Fade-in animation for text */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  </style>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-42G7ZLR08E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-42G7ZLR08E');
+  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
 </head>
-<body>
-  <!-- Main title in the center -->
-  <div class="text">ACA Church Tiruvannamalai Ministries</div>
 
-  <!-- Footer with contact details and public profiles -->
-  <footer>
-    <div class="contact-container">
-      <span>Phone: <a href="tel:+919443962034">+91 9443962034</a></span>
-      <span>WhatsApp: <a href="https://wa.me/919443962034" target="_blank">Chat on WhatsApp</a></span>
-      <span>Email: <a href="mailto:acatvmalai@gmail.com">acatvmalai@gmail.com</a></span>
-      <span>Follow us on: 
-        <a href="https://www.youtube.com/@acachurchthiruvannamalai2723" target="_blank">Youtube</a>
-      </span>
-    </div>
-  </footer>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>
