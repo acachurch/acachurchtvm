@@ -310,7 +310,7 @@ const Contact = () => {
                             </div>
                             <div style={{ height: '400px' }}>
                                 <iframe
-                                    src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&origin=Tiruvannamalai+Bus+Stand,Tiruvannamalai&destination=ACA+Church+Tiruvannamalai&mode=driving"
+                                    src={`https://www.google.com/maps/embed/v1/directions?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&origin=Tiruvannamalai+Bus+Stand,Tiruvannamalai&destination=ACA+Church+Tiruvannamalai&mode=driving`}
                                     width="100%"
                                     height="400"
                                     style={{ border: 0 }}
@@ -347,7 +347,7 @@ const Contact = () => {
                             </div>
                             <div style={{ height: '400px' }}>
                                 <iframe
-                                    src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&origin=Tiruvannamalai+Railway+Station&destination=ACA+Church+Tiruvannamalai&mode=driving"
+                                    src={`https://www.google.com/maps/embed/v1/directions?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&origin=Tiruvannamalai+Railway+Station&destination=ACA+Church+Tiruvannamalai&mode=driving`}
                                     width="100%"
                                     height="400"
                                     style={{ border: 0 }}
@@ -384,7 +384,7 @@ const Contact = () => {
                             </div>
                             <div style={{ height: '400px' }}>
                                 <iframe
-                                    src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&origin=12.2367591,79.079333&destination=ACA+Church+Tiruvannamalai&mode=driving"
+                                    src={`https://www.google.com/maps/embed/v1/directions?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&origin=12.2367591,79.079333&destination=ACA+Church+Tiruvannamalai&mode=driving`}
                                     width="100%"
                                     height="400"
                                     style={{ border: 0 }}
