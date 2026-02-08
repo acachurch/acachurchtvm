@@ -128,7 +128,7 @@ The color scheme is defined using CSS variables in `src/index.css`. Modify the `
 
 For any questions or support regarding this website:
 
-**Developer:** Inbanesan Joshua  
+**Developer:** Inbanesan  
 **Email:** inbanesanjoshua@gmail.com  
 **GitHub:** [@inbanesanjoshua](https://github.com/inbanesanjoshua)
 
