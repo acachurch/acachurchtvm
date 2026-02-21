@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://acachurch.github.io/acachurchtvm/sitemap.xml
