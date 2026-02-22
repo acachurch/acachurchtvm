@@ -1,5 +1,6 @@
 // Import placeholder image (Vite logo)
 import placeholderImage from '../assets/react.svg';
+import PastorImage from '../assets/images/pastor/pastor.webp';
 
 export const churchInfo = {
   name: "Apostolic Christian Assembly Church, Tiruvannamalai",
@@ -72,9 +73,9 @@ export const churchInfo = {
   pastor: {
     name: "Pastor Solomon",
     title: "",
-    image: placeholderImage, // Using Vite logo as placeholder
-    bio: "Pastor Solomon has been serving our community for over 15 years with dedication and passion. His heart for ministry and love for people has transformed countless lives.",
-    quote: "\"My mission is to lead people into a growing relationship with Jesus Christ.\""
+    image: PastorImage,
+    bio: "Pastor Solomon has been serving our community for over 17 years with dedication and passion. His heart for ministry and love for people has transformed countless lives.",
+    quote: "\"உங்களிடத்திலிருக்கிற தேவனுடைய மந்தையை மேய்த்து, கட்டாயமாய் அல்ல, மனப்பூர்வமாய், அசுத்த ஆதாயத்திற்காக அல்ல, உற்சாக உள்ளத்தோடு, கண்காணியுங்கள்.\" — 1 பேதுரு 5:2"
   },
   location: {
     lat: 12.225284,
