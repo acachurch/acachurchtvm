@@ -1,6 +1,6 @@
 // Import placeholder image (Vite logo)
 import placeholderImage from '../assets/react.svg';
-import PastorImage from '../assets/images/pastor/pastor.webp';
+import PastorImage from '../assets/images/pastor/Pastor.webp';
 
 export const churchInfo = {
   name: "Apostolic Christian Assembly Church, Tiruvannamalai",
