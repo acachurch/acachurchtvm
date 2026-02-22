@@ -5,6 +5,28 @@ import { churchInfo } from '../config/churchInfo';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import GradientBlob from '../components/ui/GradientBlob';
 
+const MAX_EMAILS_PER_DAY = 3;
+const RATE_LIMIT_KEY = 'aca_contact_rate_limit';
+
+const getRateLimitData = () => {
+    try {
+        const data = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY));
+        if (data && data.date === new Date().toDateString()) {
+            return data;
+        }
+        // Reset if it's a new day
+        return { date: new Date().toDateString(), count: 0 };
+    } catch {
+        return { date: new Date().toDateString(), count: 0 };
+    }
+};
+
+const incrementRateLimit = () => {
+    const data = getRateLimitData();
+    data.count += 1;
+    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(data));
+};
+
 const Contact = () => {
     const formRef = useRef();
     const [formData, setFormData] = useState({
@@ -12,11 +34,23 @@ const Contact = () => {
         email: '',
         message: ''
     });
-    const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+    const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error' | 'rate_limited'
     const [statusMessage, setStatusMessage] = useState('');
+
+    // Check rate limit on mount
+    const isRateLimited = getRateLimitData().count >= MAX_EMAILS_PER_DAY;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Check rate limit before sending
+        const rateLimitData = getRateLimitData();
+        if (rateLimitData.count >= MAX_EMAILS_PER_DAY) {
+            setStatus('error');
+            setStatusMessage(`You've reached the maximum of ${MAX_EMAILS_PER_DAY} messages per day. Please try again tomorrow or email us directly at acachurchtvm@gmail.com`);
+            return;
+        }
+
         setStatus('sending');
         setStatusMessage('');
 
@@ -33,8 +67,12 @@ const Contact = () => {
                 import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             );
 
+            // Track successful send
+            incrementRateLimit();
+            const remaining = MAX_EMAILS_PER_DAY - getRateLimitData().count;
+
             setStatus('success');
-            setStatusMessage('Thank you for your message! We will get back to you soon.');
+            setStatusMessage(`Thank you for your message! We will get back to you soon.${remaining > 0 ? ` (${remaining} message${remaining !== 1 ? 's' : ''} remaining today)` : ''}`);
             setFormData({ name: '', email: '', message: '' });
 
             // Reset status after 5 seconds
@@ -284,17 +322,19 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 className="btn btn-primary"
-                                disabled={status === 'sending'}
+                                disabled={status === 'sending' || isRateLimited}
                                 style={{
                                     width: '100%',
                                     justifyContent: 'center',
                                     fontSize: '1.1rem',
-                                    opacity: status === 'sending' ? 0.7 : 1,
-                                    cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+                                    opacity: (status === 'sending' || isRateLimited) ? 0.7 : 1,
+                                    cursor: (status === 'sending' || isRateLimited) ? 'not-allowed' : 'pointer',
                                     transition: 'opacity 0.3s ease'
                                 }}
                             >
-                                {status === 'sending' ? (
+                                {isRateLimited ? (
+                                    <>Daily Limit Reached <AlertCircle size={20} /></>
+                                ) : status === 'sending' ? (
                                     <>Sending... <Loader size={20} style={{ animation: 'spin 1s linear infinite' }} /></>
                                 ) : (
                                     <>Send Message <Send size={20} /></>
