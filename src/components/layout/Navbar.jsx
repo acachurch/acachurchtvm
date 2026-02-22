@@ -31,7 +31,7 @@ const Navbar = () => {
         { name: 'Ministries', path: '/ministries' },
         { name: 'Sermons', path: '/sermons' },
         { name: 'Events', path: '/events' },
-        { name: 'Gallery', path: '/gallery' },
+        // { name: 'Gallery', path: '/gallery' },
         { name: 'Contact', path: '/contact' },
     ];
 

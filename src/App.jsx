@@ -70,7 +70,7 @@ function App() {
           <Route path="/ministries" element={<Ministries />} />
           <Route path="/sermons" element={<Sermons />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/gallery" element={<Gallery />} />
+          {/* <Route path="/gallery" element={<Gallery />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
