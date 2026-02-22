@@ -1,21 +1,58 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { Mail, Phone, MapPin, Send, Loader, CheckCircle, AlertCircle } from 'lucide-react';
 import { churchInfo } from '../config/churchInfo';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import GradientBlob from '../components/ui/GradientBlob';
 
 const Contact = () => {
+    const formRef = useRef();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         message: ''
     });
+    const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+    const [statusMessage, setStatusMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission
-        alert('Thank you for your message! We will get back to you soon.');
-        setFormData({ name: '', email: '', message: '' });
+        setStatus('sending');
+        setStatusMessage('');
+
+        try {
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                    to_email: 'acachurchtvm@gmail.com',
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
+
+            setStatus('success');
+            setStatusMessage('Thank you for your message! We will get back to you soon.');
+            setFormData({ name: '', email: '', message: '' });
+
+            // Reset status after 5 seconds
+            setTimeout(() => {
+                setStatus('idle');
+                setStatusMessage('');
+            }, 5000);
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            setStatus('error');
+            setStatusMessage('Failed to send message. Please try again or email us directly at acachurchtvm@gmail.com');
+
+            // Reset status after 5 seconds
+            setTimeout(() => {
+                setStatus('idle');
+                setStatusMessage('');
+            }, 5000);
+        }
     };
 
     const handleChange = (e) => {
@@ -247,14 +284,47 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 className="btn btn-primary"
+                                disabled={status === 'sending'}
                                 style={{
                                     width: '100%',
                                     justifyContent: 'center',
-                                    fontSize: '1.1rem'
+                                    fontSize: '1.1rem',
+                                    opacity: status === 'sending' ? 0.7 : 1,
+                                    cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+                                    transition: 'opacity 0.3s ease'
                                 }}
                             >
-                                Send Message <Send size={20} />
+                                {status === 'sending' ? (
+                                    <>Sending... <Loader size={20} style={{ animation: 'spin 1s linear infinite' }} /></>
+                                ) : (
+                                    <>Send Message <Send size={20} /></>
+                                )}
                             </button>
+
+                            {/* Status Message */}
+                            {statusMessage && (
+                                <div style={{
+                                    marginTop: '1rem',
+                                    padding: '1rem',
+                                    borderRadius: 'var(--radius-md)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    fontSize: '0.95rem',
+                                    fontWeight: 500,
+                                    animation: 'fadeIn 0.3s ease',
+                                    background: status === 'success'
+                                        ? 'rgba(42, 157, 143, 0.15)'
+                                        : 'rgba(231, 76, 60, 0.15)',
+                                    color: status === 'success'
+                                        ? '#2A9D8F'
+                                        : '#E74C3C',
+                                    border: `1px solid ${status === 'success' ? 'rgba(42, 157, 143, 0.3)' : 'rgba(231, 76, 60, 0.3)'}`
+                                }}>
+                                    {status === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
+                                    {statusMessage}
+                                </div>
+                            )}
                         </form>
                     </ScrollReveal>
                 </div>
